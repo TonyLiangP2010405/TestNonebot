@@ -138,7 +138,7 @@ async def _monitor_message(event: GroupMessageEvent):
 
 
 # =========================
-# Add qq numbers
+# Add and Remove qq numbers
 # =========================
 add_qq_number = on_command("添加监听群友", priority=10, block=True)
 remove_qq_number = on_command("删除监听群友", priority=10, block=True)
@@ -194,3 +194,21 @@ async def remove_qq_number_in_group(bot: Bot, event: Event, args: Message = Comm
         )
 
 
+# =========================
+# list qq numbers
+# =========================
+list_qq_numbers = on_command("查看当前监听列表", priority=10, block=True)
+
+
+@list_qq_numbers.handle()
+async def list_group_qq_numbers(bot: Bot, event: GroupMessageEvent):
+    if _state["monitor_qq_numbers"] or len(_state["monitor_qq_numbers"]) == 0:
+        await bot.send_group_msg(
+            group_id=event.group_id,
+            message=Message("当前监听列表为空")
+        )
+    else:
+        await bot.send_group_msg(
+            group_id=event.group_id,
+            message=Message("当前的监听列表为："+ _state["monitor_qq_numbers"])
+        )
