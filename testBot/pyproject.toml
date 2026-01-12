@@ -20,7 +20,7 @@ dev = [
 
 [tool.nonebot]
 plugin_dirs = ["src/plugins"]
-builtin_plugins = ["base", "single_session"]
+builtin_plugins = ["single_session"]
 
 [tool.nonebot.adapters]
 nonebot-adapter-onebot = [
@@ -103,3 +103,5 @@ keep-runtime-typing = true
 pythonVersion = "3.9"
 pythonPlatform = "All"
 typeCheckingMode = "standard"
+
+
